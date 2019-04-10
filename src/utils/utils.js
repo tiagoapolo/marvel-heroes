@@ -6,7 +6,10 @@ const makeRequestCreator = () => {
   
   let cancel;
 
-  return async query => {
+  return async (uri,query) => {
+
+    console.log(query)
+
     if (cancel) {
       // Cancel the previous request before making a new request
       cancel.cancel();
@@ -24,9 +27,9 @@ const makeRequestCreator = () => {
       } 
       */
      
-      const res = await axios(query, { cancelToken: cancel.token });
+      const res = await axios(uri, { cancelToken: cancel.token, params: query });
 
-      const result = res.data.data.results;
+      const result = res.data.data;
       
       // Store response
       //resources[query] = result;

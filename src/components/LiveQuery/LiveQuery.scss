@@ -1,0 +1,71 @@
+.LiveQuery {
+
+    input {
+        width: 100%;
+        height: 36px;
+        border-radius: 5px;
+        padding-left: 0.5em;
+        border: 1px solid #00000029;
+    }
+
+
+    input:focus {
+        outline-width: 0;
+    }
+
+    .dropList {
+
+        border: 1px solid #00000029;
+        border-top: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 0.5em 0 0.5em 0;
+        margin-top: 0;
+        max-height: 150px;
+        overflow-y: scroll;
+        width: 102%;
+    }
+
+    .query-result{
+        display: flex;
+        align-items: center;
+        padding: 0.2em;
+        
+        span{
+            padding-left: 1em;
+        }
+
+        img{
+            padding-left: 1em;
+        }
+    }
+
+
+    .dropList::-webkit-scrollbar {
+        width: 8px;
+        background-color: #F5F5F5;
+    }
+
+    .dropList::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(114, 114, 114, 0.3);
+        background-color: #555;
+    }
+
+
+    li:hover {
+        background-color: grey;
+        color: white;
+    }
+
+    .loader{
+        color: lightgrey;
+        padding-top: 0.2em;
+        padding-bottom: 0.1em;
+    }
+
+    .loader:hover{
+        background-color: none;
+        color: lightgrey;
+    }
+}

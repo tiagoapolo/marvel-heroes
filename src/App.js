@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 
-import axios from "axios";
-import { search } from './utils';
+import { search } from './utils/utils';
+import Table from './components/Table/Table';
+import { paginate } from './utils/Paginate'
+import LiveQuery from './components/LiveQuery/LiveQuery';
 
 class App extends Component {
 
@@ -16,12 +17,13 @@ class App extends Component {
   search = async val => {
 
     this.setState({ loading: true })   
-    
+    console.log('myval ', val)
     const res = await search(
-      `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${val}&apikey=10fa2c2a0779afedacae0909b812458d`
+      `https://gateway.marvel.com:443/v1/public/characters?apikey=10fa2c2a0779afedacae0909b812458d`,
+      val ? { nameStartsWith: val } : null
     );
 
-    const heroes = res;
+    const heroes = await res;
     
     this.setState({ heroes, loading: false });
   }
@@ -34,21 +36,40 @@ class App extends Component {
   get renderHeroes() {
     let heroes = <h1>There's no heroes</h1>;
     if (this.state.heroes) {
-      heroes = this.state.heroes ? this.state.heroes.map(movie => <div>{movie.name}</div>) : ''
+      heroes = this.state.heroes.count ? this.state.heroes.results.map(hero => <div key={hero.name}>{hero.name}</div>) : <div>No items found</div>
     }
 
     return heroes;
   }
 
+  clearSearch = () => this.setState({heroes: null, value: ''})
+
+  selectedHero = (hero) => console.log('Chosen hero: ', hero)
+
   render() {
+
+    const {heroes} = this.state
+
+    if(heroes) console.log(`Paginate for ${heroes.total} `,paginate(heroes.total))
+
     return (
       <div className="App">
-        <input
+{/*         <input
           value={this.state.value}
           onChange={e => this.onChangeHandler(e)}
           placeholder="Type something to search"
         />
-        {this.renderHeroes}
+ */}
+        <div style={{maxWidth: '300px'}}>
+          <LiveQuery 
+            apiUrl={'https://gateway.marvel.com:443/v1/public/characters?apikey=10fa2c2a0779afedacae0909b812458d'}
+            onSelected={this.selectedHero}
+          ></LiveQuery>
+        </div>
+
+
+{/*         <Table data={heroes}></Table>
+        <button onClick={this.clearSearch}>Clear Search</button> */}
       </div>
     );
   }
