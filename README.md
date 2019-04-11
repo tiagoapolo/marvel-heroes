@@ -2,7 +2,9 @@
 
 Inside this project lies a web application that queries Marvel's API to search for your favorite hero.
 
-The project was createad without a specific CSS framework with built-in components, only using Reacts Styling, SCSS and Flexbox
+- The project was createad without a specific CSS framework with built-in components, only using Reacts Styling, SCSS and Flexbox
+
+- It uses Axios for HTTP requests and implements duplicate requests cancelation in the `utils.js` file
 
 ##  To run this application:
 
