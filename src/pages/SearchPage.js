@@ -10,7 +10,10 @@ class SearchPage extends Component {
     value:''
   }
 
-  selectedHero = (hero) => console.log('Chosen hero: ', hero)
+  selectedHero = (hero) => { 
+    console.log('Chosen hero: ', hero)
+    this.props.history.push('/heroes/'+hero.id, hero)
+  }
 
   render() {
 

@@ -4,30 +4,31 @@ import HeroDetails from "../pages/HeroDetails";
 import SearchPage from "../pages/SearchPage";
 
 
+const hellothere = (data) => {
+  console.log('log',data)
 
+  return true
+}
 
-// const LoginRoute = ({ component: Component, ...rest }) => (
-//     <Route
-//       {...rest}
-//       render={props =>
-//         !isAuthenticated() ? (
-//           <Component {...props} />
-//         ) : (
-//           <Redirect to={{ pathname: "/suppliers", state: { from: props.location } }} />
-//         )
-//       }
-//     />
-//   );
-// <LoginRoute path="/" component={SearchPage} />
+const CustomRoute = ({ component: Component, ...rest }) => (
+    <Route  {...rest} render={props =>
+        hellothere(props) ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/suppliers", state: { from: props.location } }} />
+        )
+      }
+    />
+);
 
 // <Route exact path="/login" component={() => <h1>Login</h1>} />
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={SearchPage} />
-      <Route path="/heroes/:heroId" component={HeroDetails} />
-      <Route path="*" component={() => <h1>Page not found</h1>} />
+      <Route path="/heroes/:id" component={HeroDetails} />
+      <Route path="/" exact={true} component={SearchPage} />
+      <Route path="*" component={() => <div style={{display: 'flex', alignContent:'center', height: '100vh'}}><h2 style={{ margin: 'auto' }} >Page Not Found</h2></div> } />
     </Switch>
   </BrowserRouter>
 );

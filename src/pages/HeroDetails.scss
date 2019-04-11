@@ -1,0 +1,78 @@
+.HeroDetails{
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover{
+        color: darkgray;
+    }
+
+    .back-button{
+        img{
+            width: 44px;
+        }
+    }
+
+    .hero-content{
+        margin: 1em;
+        
+        .hero-short{
+            text-align: center;
+            border-bottom: 1px solid #00000030;
+            .hero-pic{
+                width:20%;
+            }
+
+            .url-container{
+                padding-bottom: 1em;
+
+                .url-link{
+                    padding-right: 1em;
+                    margin-bottom: 1em;
+                }
+
+                .url-link:last-child{
+                    padding-right: 0;
+                }
+            }
+            
+
+            
+
+        }
+
+        .comic{
+
+            text-align: center;
+            border-bottom: 1px solid #00000030;
+            margin-bottom: 2em;
+
+            .comic-table{
+                padding-left: 0;
+                list-style: none;
+
+                li{
+                    padding: 0.2em;
+                }
+            }
+            
+        }
+
+        .comic:last-child{
+            border-bottom: none;
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .hero-content{
+
+            .hero-short{
+                .hero-pic{
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
