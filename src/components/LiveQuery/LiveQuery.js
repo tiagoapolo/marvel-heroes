@@ -14,26 +14,17 @@ class LiveQuery extends Component {
   }
   
   componentDidMount() {
-    document.addEventListener('mousedown', this.dismiss);
+    document.addEventListener('mousedown', this.dismiss, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.dismiss);
+    document.removeEventListener('mousedown', this.dismiss, false);
   }
 
   dismiss = (ev) => {
-    if(
-      ev.currentTarget.className !== 'query-input' &&
-      ev.currentTarget.className !== 'dropList' &&
-      ev.currentTarget.className !== 'query-result' &&
-      ev.currentTarget.className !== "result-thumbnail" &&
-      ev.currentTarget.className !== "result-name"
-    ){
-      this.setState({ heroes: null, value: '', loading: false ,collapsed: true })     
-    } else {
-      console.log(ev.currentTarget)
-    }
-
+    if( !this.node.contains(ev.target) ){
+      this.setState({ heroes: null, value: '', loading: false ,collapsed: true }) 
+    } 
   }
 
   search = async (val='', ...queryParams) => {
@@ -107,9 +98,10 @@ class LiveQuery extends Component {
   render() {
 
     const { heroes, loading } = this.state
+    const { width } = this.props
 
     return (
-      <div className="LiveQuery" >
+      <div className="LiveQuery" ref={node => this.node = node} style={{width: width+'%'}}>
         <input
           className="query-input"
           value={this.state.value}
@@ -119,19 +111,19 @@ class LiveQuery extends Component {
             heroes && heroes.count ? 
             {
               borderBottomLeftRadius: '0px',
-              borderBottomRightRadius: '0px'
+              borderBottomRightRadius: '0px',
             } 
             :
             {
               borderBottomLeftRadius: '5px',
-              borderBottomRightRadius: '5px'
+              borderBottomRightRadius: '5px',
             } 
           }
         />
         { 
           
           heroes ? 
-          <ul className="dropList" onScroll={this.onScrollBottom} >
+          <ul className="dropList" onScroll={this.onScrollBottom} style={{width: width ? (width+1) + '%' : 'auto'}} >
             {  
               (heroes && heroes.count) ? 
               this.renderResults(heroes.results)
