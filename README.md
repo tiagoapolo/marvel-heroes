@@ -31,3 +31,5 @@ npm run serve
 ```
 
 Now open [here](http://localhost:8080/) and type the name of the hero you want to look for.
+
+![alt tag](https://raw.githubusercontent.com/tiagoapolo/marvel-heroes/master/githubImages/search.png)
