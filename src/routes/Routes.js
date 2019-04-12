@@ -1,27 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HeroDetails from "../pages/HeroDetails";
 import SearchPage from "../pages/SearchPage";
-
-
-const hellothere = (data) => {
-  console.log('log',data)
-
-  return true
-}
-
-const CustomRoute = ({ component: Component, ...rest }) => (
-    <Route  {...rest} render={props =>
-        hellothere(props) ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={{ pathname: "/suppliers", state: { from: props.location } }} />
-        )
-      }
-    />
-);
-
-// <Route exact path="/login" component={() => <h1>Login</h1>} />
 
 const Routes = () => (
   <BrowserRouter>

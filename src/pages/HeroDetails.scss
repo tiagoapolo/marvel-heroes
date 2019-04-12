@@ -1,36 +1,77 @@
 .HeroDetails{
 
+    .profile-bg{
+        background-image: url('/hero-banner.png');
+        height: 15em;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
     a{
         text-decoration: none;
         color: black;
     }
+
+    
+    /*
+        margin-top: -4em;
+        position: relative;
+        z-index: 10000;
+    */
 
     a:hover{
         color: darkgray;
     }
 
     .back-button{
+        position: absolute;
+        z-index: 100;
+        padding-left: 0.5em;
+        padding-top: 1em;
+
         img{
-            width: 44px;
+            width: 36px;
         }
     }
 
     .hero-content{
-        margin: 1em;
         
         .hero-short{
+
             text-align: center;
             border-bottom: 1px solid #00000030;
-            .hero-pic{
-                width:20%;
+            position: relative;
+            z-index: 100;
+            margin-top: -3em;
+
+
+            .hero-profile {
+                text-align: left;
+                padding-left: 3em;
+                .hero-pic{
+                    width: 160px;
+                    height: auto;
+                    border: 3px solid white;
+                    border-radius: 10%;
+                       
+                }
+
+            }
+
+            .hero-info{
+                max-width: 800px;
+                margin: auto;
             }
 
             .url-container{
                 padding-bottom: 1em;
+                padding-top: 1em;
 
                 .url-link{
                     padding-right: 1em;
-                    margin-bottom: 1em;
+                    margin-bottom: 1em;                    
                 }
 
                 .url-link:last-child{
@@ -69,10 +110,28 @@
         .hero-content{
 
             .hero-short{
-                .hero-pic{
-                    width: 30%;
+
+                .hero-profile {
+
+                    .hero-pic{
+                        width: 100px;
+                        height: auto;
+                    }
+                }
+
+                .hero-info{
+                    padding: 0 1em 0 1em;
                 }
             }
         }
     }
+
+    @media (min-width: 1200px) {
+
+        .hero-content .hero-short .hero-profile {
+            padding-left: 6em;
+        }
+    }
+
+            
 }

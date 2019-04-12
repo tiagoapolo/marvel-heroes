@@ -45,20 +45,26 @@ class HeroDetails extends Component {
     console.log(hero)
 
     return (
-      <div className="HeroDetails">
+      <div className="HeroDetails">              
         <div className="back-button">
-          <img onClick={this.backButton} src="../back.png"/> 
+          <img alt="back button" onClick={this.backButton} src="../back.png"/> 
         </div> 
          
         {
           hero ?
           <div className="hero-content">
+            <div className="profile-bg"></div>
             <div className="hero-short">
-              <img className="hero-pic" src={hero.thumbnail.path+'.'+hero.thumbnail.extension}/>
+              <div className="hero-profile">
+                <div style={{display: 'inline-block', textAlign: 'center'}}>
+                  <img alt="hero thumbnail" className="hero-pic" src={hero.thumbnail.path+'.'+hero.thumbnail.extension}/>
+                  <h3>{hero.name}</h3>
+                </div>
+              </div>             
               <div className="hero-info">
-                <h3>{hero.name}</h3>
-                { hero.description ? <p>{hero.description}</p> : ''  }
-                { 
+                { hero.description ? <p>{hero.description}</p> : ''  }                
+              </div>
+              { 
                   hero.urls ? 
                   <div className="url-container"> 
                     { hero.urls.map((urlData,idx) => <a key={idx} className="url-link" href={ urlData.url } >
@@ -66,7 +72,6 @@ class HeroDetails extends Component {
                   </div> 
                   : ''
                 }
-              </div>
             </div>
             <div className="hero-full">
                 {

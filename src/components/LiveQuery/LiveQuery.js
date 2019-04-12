@@ -90,7 +90,7 @@ class LiveQuery extends Component {
   renderResults = (results) => {
     return results.map((hero, idx) => 
     <li key={ hero.id } value={idx} onClick={this.selected} className="query-result">
-      <img className="result-thumbnail" style={{width:'30px', height: '30px', overflow: 'hidden' }} src={hero.thumbnail.path+'.'+hero.thumbnail.extension} />
+      <img alt="Hero Thumbnail" className="result-thumbnail" style={{width:'30px', height: '30px', overflow: 'hidden' }} src={hero.thumbnail.path+'.'+hero.thumbnail.extension} />
       <span className="result-name">{ hero.name }</span>
     </li>)
   }

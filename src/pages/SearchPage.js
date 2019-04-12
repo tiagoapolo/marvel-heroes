@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './SearchPage.scss';
 import LiveQuery from '../components/LiveQuery/LiveQuery';
-import { withRouter } from "react-router-dom";
 
 
 class SearchPage extends Component {
@@ -21,7 +20,7 @@ class SearchPage extends Component {
     return (
       <div className="SearchPage">
         <div>
-          <img src="./marvel-logo.png" />
+          <img alt="marvel logo" src="./marvel-logo.png" />
         </div>
         <LiveQuery
           width={80}
